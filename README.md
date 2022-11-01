@@ -24,11 +24,13 @@ git clone https://github.com/nick-pliakis/urlshortener.git .
 cp .env.example .env
 ```
 Populate the ```POSTGRES_USER``` and ```POSTGRES_PASSWORD``` fields with the appropriate values. Please note that these values must be the same as the corresponding values in the ```stack``` folder (see below)
+
 3. Navigate to the folder ```stack```. Create an ```.env``` file by copying the existing ```.env.example``` file
 ```
 cp .env.example .env
 ```
 Populate the ```POSTGRES_USER``` and ```POSTGRES_PASSWORD``` fields with the appropriate values. Please note that these values must be the same as the corresponding values in the ```backend/urlshortener/urlshortener``` folder (see below)
+
 4. While in the folder ```stack```, build the application stack with ```docker-compose```:
 ```
 docker-compose up -d
