@@ -1,0 +1,3 @@
+stack/.env
+frontend/.env
+backend/urlshortener/urlshortener/.env

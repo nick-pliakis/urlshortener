@@ -1,0 +1,42 @@
+version: "3.3"
+
+services:
+
+  db:
+    image: postgres
+    container_name: db
+    hostname: db
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    networks:
+      - app-network
+
+  api:
+    build:
+      context: ../
+      dockerfile: ./stack/backend/Dockerfile
+    container_name: api
+    hostname: api
+    restart: unless-stopped
+    command: python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  web:
+    build:
+      context: ../
+      dockerfile: ./stack/frontend/Dockerfile
+    container_name: web
+    hostname: web
+    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,23 @@
+version: "3.3"
+
+services:
+
+  db:
+    ports:
+      - "54325:5432"
+
+  api:
+    volumes: 
+      - ../backend/urlshortener:/code
+    ports:
+      - "8000:8000"
+
+  web:
+    volumes:
+      - ../frontend:/app
+    ports:
+      - "3000:3000"
+
+networks:
+  app-network:
+    driver: bridge
